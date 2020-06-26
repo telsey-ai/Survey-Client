@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import { signIn } from '../../api/auth'
+import { createSurvey } from '../../api/surveys'
 import messages from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-class SignIn extends Component {
+class CreateSurveys extends Component {
   constructor () {
     super()
 
     this.state = {
-      email: '',
-      password: ''
+      title: '',
+      question: ''
     }
   }
 
@@ -21,59 +21,59 @@ class SignIn extends Component {
     [event.target.name]: event.target.value
   })
 
-  onSignIn = event => {
+  onCreateSurvey = event => {
     event.preventDefault()
 
-    const { msgAlert, history, setUser } = this.props
+    const { msgAlert, history, setUser, user } = this.props
 
-    signIn(this.state)
+    createSurvey(this.state, user)
       .then(res => {
         console.log(res.data.user)
         setUser(res.data.user)
       })
       .then(() => msgAlert({
-        heading: 'Sign In Success',
-        message: messages.signInSuccess,
+        heading: 'Create Survey Success',
+        message: messages.createSurveySuccess,
         variant: 'success'
       }))
       .then(() => history.push('/'))
       .catch(error => {
         this.setState({ email: '', password: '' })
         msgAlert({
-          heading: 'Sign In Failed with error: ' + error.message,
-          message: messages.signInFailure,
+          heading: 'Create Survey Failed with error: ' + error.message,
+          message: messages.createSurveyFailure,
           variant: 'danger'
         })
       })
   }
 
   render () {
-    const { email, password } = this.state
+    const { title, question } = this.state
 
     return (
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h3>Sign In</h3>
-          <Form onSubmit={this.onSignIn}>
-            <Form.Group controlId="email">
-              <Form.Label>Email address</Form.Label>
+          <h3>Create Survey</h3>
+          <Form onSubmit={this.onCreateSurvey}>
+            <Form.Group controlId="title">
+              <Form.Label>Survey Title</Form.Label>
               <Form.Control
                 required
-                type="email"
-                name="email"
-                value={email}
-                placeholder="Enter email"
+                type="text"
+                name="title"
+                value={title}
+                placeholder="Survey Title"
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Form.Group controlId="password">
-              <Form.Label>Password</Form.Label>
+            <Form.Group controlId="question">
+              <Form.Label>Question</Form.Label>
               <Form.Control
                 required
-                name="password"
-                value={password}
-                type="password"
-                placeholder="Password"
+                name="question"
+                value={question}
+                type="text"
+                placeholder="Question"
                 onChange={this.handleChange}
               />
             </Form.Group>
@@ -90,4 +90,4 @@ class SignIn extends Component {
   }
 }
 
-export default withRouter(SignIn)
+export default withRouter(CreateSurveys)
