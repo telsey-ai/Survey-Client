@@ -17,6 +17,7 @@ class Surveys extends Component {
 
   render () {
     const { user } = this.props
+    console.log(user)
     return (
       <div className="row">
         <ul className="col-sm-12 my-auto">
