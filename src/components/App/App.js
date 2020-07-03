@@ -10,6 +10,8 @@ import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import Surveys from '../Surveys/Surveys'
 import CreateSurveys from '../Surveys/CreateSurveys'
+import ShowSurvey from '../Surveys/ShowSurvey'
+import EditSurvey from '../Surveys/EditSurvey'
 
 class App extends Component {
   constructor () {
@@ -58,6 +60,12 @@ class App extends Component {
           )} />
           <AuthenticatedRoute exact user={user} path='/surveys' render={() => (
             <Surveys msgAlert={this.msgAlert} user={user} setUser={this.setUser} />
+          )} />
+          <AuthenticatedRoute exact user={user} path="/surveys/:id" render={() => (
+            <ShowSurvey msgAlert={this.msgAlert} user={user} setUser={this.setUser} />
+          )} />
+          <AuthenticatedRoute exact user={user} path="/edit-surveys/:id" render={() => (
+            <EditSurvey msgAlert={this.msgAlert} user={user} setUser={this.setUser} />
           )} />
           <AuthenticatedRoute exact user={user} path='/create-surveys' render={() => (
             <CreateSurveys msgAlert={this.msgAlert} user={user} setUser={this.setUser} />

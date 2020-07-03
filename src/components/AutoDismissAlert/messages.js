@@ -7,5 +7,9 @@ export default {
   changePasswordSuccess: 'Password changed successfully!',
   changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
   createSurveySuccess: 'Succefully created survey!',
-  createSurveyFailure: 'Failed to create survey!'
+  createSurveyFailure: 'Failed to create survey!',
+  deleteSurveySuccess: 'Succefully deleted survey!',
+  deleteSurveyFailure: 'Failed to delete survey!',
+  updateSurveySuccess: 'Succefully updated survey!',
+  updateSurveyFailure: 'Failed to update survey!'
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 import Nav from 'react-bootstrap/Nav'
 
@@ -23,7 +23,7 @@ class Surveys extends Component {
         <ul className="col-sm-12 my-auto">
           {user.surveys.map(item => (
             <li key={item._id}>
-              <div>{item.title}</div>
+              <Link to={`/surveys/${item._id}`}>{item.title}</Link>
             </li>
           ))}
         </ul>

@@ -1,16 +1,12 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const signUp = credentials => {
+export const indexSurvey = user => {
   return axios({
-    method: 'POST',
-    url: apiUrl + '/sign-up',
-    data: {
-      credentials: {
-        email: credentials.email,
-        password: credentials.password,
-        password_confirmation: credentials.passwordConfirmation
-      }
+    method: 'GET',
+    url: apiUrl + '/survey',
+    headers: {
+      'Authorization': `Token token=${user.token}`
     }
   })
 }
@@ -31,9 +27,9 @@ export const createSurvey = (survey, user) => {
   })
 }
 
-export const signOut = user => {
+export const deleteSurvey = (user, id) => {
   return axios({
-    url: apiUrl + '/sign-out',
+    url: apiUrl + '/survey/' + id,
     method: 'DELETE',
     headers: {
       'Authorization': `Token token=${user.token}`
@@ -41,17 +37,16 @@ export const signOut = user => {
   })
 }
 
-export const changePassword = (passwords, user) => {
+export const updateSurvey = (survey, user, id) => {
   return axios({
-    url: apiUrl + '/change-password',
+    url: apiUrl + '/survey/' + id,
     method: 'PATCH',
     headers: {
       'Authorization': `Token token=${user.token}`
     },
     data: {
-      passwords: {
-        old: passwords.oldPassword,
-        new: passwords.newPassword
+      survey: {
+        title: survey.title
       }
     }
   })
