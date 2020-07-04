@@ -12,7 +12,7 @@ export const indexSurvey = user => {
 }
 
 export const createSurvey = (survey, user) => {
-  console.log(survey)
+  // console.log(survey)
   return axios({
     url: apiUrl + '/survey',
     method: 'POST',

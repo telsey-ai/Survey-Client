@@ -11,13 +11,13 @@ class Surveys extends Component {
   // const { msgAlert, history, setUser, user } = this.props
   componentDidMount () {
     // const { msgAlert, history, setUser, user } = this.props
-    console.log(this.state)
+    // console.log(this.state)
     // console.log(user)
   }
 
   render () {
     const { user } = this.props
-    console.log(user)
+    // console.log(user)
     return (
       <div className="row">
         <ul className="col-sm-12 my-auto">

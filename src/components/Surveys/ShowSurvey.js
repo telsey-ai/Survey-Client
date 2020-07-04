@@ -13,9 +13,9 @@ class ShowSurvey extends Component {
   // const { msgAlert, history, setUser, user } = this.props
   componentDidMount () {
     // const { msgAlert, history, setUser, user } = this.props
-    console.log(this.state)
-    const { user } = this.props
-    console.log('this ran', user.surveys.filter(survey => survey._id === this.props.match.params.id))
+    // console.log(this.state)
+    // const { user } = this.props
+    // console.log('this ran', user.surveys.filter(survey => survey._id === this.props.match.params.id))
     // console.log(user)
   }
 
@@ -27,7 +27,7 @@ class ShowSurvey extends Component {
     deleteSurvey(user, this.props.match.params.id)
       .then(res => indexSurvey(user))
       .then(res => {
-        console.log(res.data.user)
+        // console.log(res.data.user)
         setUser(res.data.user)
       })
       .then(() => msgAlert({
@@ -48,7 +48,7 @@ class ShowSurvey extends Component {
 
   render () {
     const { user } = this.props
-    console.log(user)
+    // console.log(user)
     return (
       <div className="row">
         <ul className="col-sm-12 my-auto">

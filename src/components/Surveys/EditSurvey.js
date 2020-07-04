@@ -17,9 +17,9 @@ class EditSurvey extends Component {
   // const { msgAlert, history, setUser, user } = this.props
   componentDidMount () {
     // const { msgAlert, history, setUser, user } = this.props
-    console.log(this.state)
-    const { user } = this.props
-    console.log('this ran', user.surveys.filter(survey => survey._id === this.props.match.params.id)[0])
+    // console.log(this.state)
+    // const { user } = this.props
+    // console.log('this ran', user.surveys.filter(survey => survey._id === this.props.match.params.id)[0])
     // console.log(user)
   }
 
@@ -45,7 +45,7 @@ class EditSurvey extends Component {
     updateSurvey(this.state.survey, user, this.props.match.params.id)
       .then(res => indexSurvey(user))
       .then(res => {
-        console.log(res.data.user)
+        // console.log(res.data.user)
         setUser(res.data.user)
       })
       .then(() => msgAlert({
@@ -65,8 +65,8 @@ class EditSurvey extends Component {
   }
 
   render () {
-    const { user } = this.props
-    console.log(user)
+    // const { user } = this.props
+    // console.log(user)
     return (
       <form onSubmit={this.handleSubmit}>
         <label>Title</label>

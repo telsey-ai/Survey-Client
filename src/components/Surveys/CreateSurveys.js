@@ -28,7 +28,7 @@ class CreateSurveys extends Component {
 
     createSurvey(this.state, user)
       .then(res => {
-        console.log(res.data.user)
+        // console.log(res.data.user)
         setUser(res.data.user)
       })
       .then(() => msgAlert({
